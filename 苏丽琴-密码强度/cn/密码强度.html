@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>密码强度</title>
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+    <style type="text/css">
+    .wrap{
+        width:300px;
+        height:100px;
+        margin:200px auto;
+    }
+    .password{
+       position:relative;
+    }
+    .password img{
+        width:300px;
+        height:20px;
+        margin:10px auto;
+    }
+    .password .xian{
+        position:absolute;
+        display:block;
+        /*top:110px;*/
+        bottom: 15px;
+        left:0px;
+        /*width:300px;*/
+        height:20px;
+        background-image:url(../image/2.png);
+        background-size: 300px 20px;
+    }
+    </style>
+</head>
+<body>
+  <div class="wrap">
+    <form action="" >
+      <div class="password">
+            <label for="pasword">
+                <em>*</em>
+                <span class="span">输入密码：</span>
+            </label>
+            <input type="password" placeholder="请输入密码" id="password">
+            <img src="../image/1.png" alt=""  id="img" />
+            <span class="xian" id="xian"></span>
+        </div>  
+    </form>
+  </div>
+  <script type="text/javascript">
+  var password=document.getElementById("password");
+  var img=document.getElementById("img");
+  var xian=document.getElementById("xian");
+    //密码的正则
+   password.onblur=function(){
+        // 获取用户输入到input的value值
+        var passText=password.value;
+        var reg=/^[^\s\u-\u4e00\u9fa5-\uffff]{6,20}$/;
+        var reg1=/^\d{6,20}$/gi ;//6-20位数字；
+        var reg2= /^\w{6,20}$/gi;//6-20位数字或者字母
+        if(reg.test(passText)){
+            console.log(reg1.test(passText));
+            xian.style.width="100px";
+        }
+        if(reg2.test(passText)){
+            console.log(reg2.test(passText));
+            xian.style.width="200px";
+        }
+        if(reg1.test(passText)){
+            console.log(reg.test(passText));
+            xian.style.width="300px";
+        }
+    }
+    //hdrddghhgjjjjjjjjj
+  </script>
+</body>
+</html>
